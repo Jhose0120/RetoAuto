@@ -7,8 +7,8 @@ import org.junit.runner.RunWith;
 
 @RunWith(CucumberWithSerenity.class)
 @CucumberOptions(
-        features = "src/test/resources/feature",
-        glue = "co.reto.stepsdefinition",
+        features = "src/test/resources/feature/reto_auto.feature",
+        glue = "org.reto.stepsdefinition",
         snippets = SnippetType.CAMELCASE)
 
 public class Runner {
