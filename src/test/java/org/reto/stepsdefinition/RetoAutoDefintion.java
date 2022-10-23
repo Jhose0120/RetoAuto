@@ -6,10 +6,8 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import net.serenitybdd.screenplay.actors.OnStage;
 import net.serenitybdd.screenplay.actors.OnlineCast;
-import org.reto.tasks.Ingresar;
-import org.reto.tasks.Login;
-import org.reto.tasks.OpenThe;
-import org.reto.tasks.Registrar;
+import org.reto.questions.Verificar;
+import org.reto.tasks.*;
 
 public class RetoAutoDefintion {
     @Before
@@ -24,11 +22,11 @@ public class RetoAutoDefintion {
 
     @When("^Creo unidad de negocio$")
     public void creoUnidadDeNegocio() throws Exception {
-        OnStage.theActorInTheSpotlight().attemptsTo(Ingresar.businessUnits(), Registrar.unidad());
+        //OnStage.theActorInTheSpotlight().attemptsTo(Ingresar.businessUnits(), Registrar.unidad());
     }
 
     @Then("^Genero programacion y valido$")
     public void generoProgramacionYValido() throws Exception {
-        //OnStage.theActorInTheSpotlight().attemptsTo(Programar.reunion(), Verificar.creacionReunion());
+        OnStage.theActorInTheSpotlight().attemptsTo(IngresarAReuniones.solicitarCreacion(),Programar.reunion());//Verificar.creacionReunion()
     }
 }
