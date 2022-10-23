@@ -6,6 +6,7 @@ import net.serenitybdd.screenplay.Tasks;
 import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.Enter;
 import org.openqa.selenium.Keys;
+import org.reto.interactions.SeleccionarAleatorio;
 import org.reto.userinterface.RetoOrganizacionPage;
 
 public class Registrar implements Task {
@@ -18,7 +19,7 @@ public class Registrar implements Task {
         actor.attemptsTo(Click.on(RetoOrganizacionPage.BTN_INSERT_BUSINESS_UNIT),
                 Enter.theValue("namex").into(RetoOrganizacionPage.NAME_BUSINESS_UNIT),
                 Click.on(RetoOrganizacionPage.PARENT_BUSINESS_UNIT),
-                Click.on(RetoOrganizacionPage.TEXT_FOR_BUSINESS_UNIT),
+                new SeleccionarAleatorio(RetoOrganizacionPage.TEXT_FOR_BUSINESS_UNIT),
                 Click.on(RetoOrganizacionPage.BTN_SAVE)
         );
     }

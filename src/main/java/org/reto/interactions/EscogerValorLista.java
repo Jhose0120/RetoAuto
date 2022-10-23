@@ -13,29 +13,25 @@ import java.util.List;
 
 public class EscogerValorLista implements Interaction {
 
-    private final Target element;
-    private final int index;
+    private final Target target;
 
-
-    public EscogerValorLista(Target element, int index) {
-        this.element = element;
-        this.index = index;
+    public EscogerValorLista(Target element) {
+        this.target = element;
 
     }
 
     @Override
     public <T extends Actor> void performAs(T actor) {
 
-        WebElement hour = element.resolveFor(actor);
+        WebElement hour = target.resolveFor(actor);
         hour.click();
         String text = hour.toString().substring(10);
         List<WebElement> lista= hour.findElements(By.xpath(""+text+"/option"));
-        System.out.println(lista.size()+" "+text);
         Select listSelect = new Select(hour);
-        listSelect.selectByIndex(index);
+        listSelect.selectByIndex((int)(Math.random()*lista.size()));
     }
 
-    public static EscogerValorLista index(Target element, int index){
-        return Instrumented.instanceOf(EscogerValorLista.class).withProperties(element, index);
+    public static EscogerValorLista index(Target target1){
+        return Instrumented.instanceOf(EscogerValorLista.class).withProperties(target1);
     }
 }

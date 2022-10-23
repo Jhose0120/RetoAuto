@@ -10,22 +10,22 @@ import java.util.List;
 
 public class SeleccionarUnidadCreada implements Interaction {
 
-    private final Target element;
-    private final String bussinessName;
+    private final Target target;
+    private final String nombreUnidadDeNegocio;
 
 
     public SeleccionarUnidadCreada(Target element, String bussinessName) {
-        this.element = element;
-        this.bussinessName = bussinessName;
+        this.target = element;
+        this.nombreUnidadDeNegocio = bussinessName;
     }
 
     @Override
     public <T extends Actor> void performAs(T actor) {
 
-        WebElement listLocation = element.resolveFor(actor);
+        WebElement listLocation = target.resolveFor(actor);
         List<WebElement> options = listLocation.findElements(By.xpath(listLocation.toString().substring(10)));
         for (WebElement i : options) {
-            if (i.getText().contains(bussinessName)){
+            if (i.getText().equals(nombreUnidadDeNegocio)){
                 i.click();
                 break;
             }

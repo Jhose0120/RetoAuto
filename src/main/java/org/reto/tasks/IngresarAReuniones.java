@@ -16,6 +16,7 @@ public class IngresarAReuniones implements Task {
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(Click.on(RetoReunionesPage.LBL_MEETING),
                 Click.on(RetoReunionesPage.LBL_MEETINGS),
-                Click.on(RetoReunionesPage.BTN_ADD_MEETING));
+                Click.on(RetoReunionesPage.BTN_ADD_MEETING)
+        );
     }
 }
