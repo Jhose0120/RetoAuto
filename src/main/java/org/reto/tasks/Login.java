@@ -18,7 +18,6 @@ public class Login implements Task {
     public static Login onThePage(String username, String password) {
         return Tasks.instrumented(Login.class, username, password);
     }
-
     @Override
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(Enter.theValue(username).into(RetoPage.USENAME),

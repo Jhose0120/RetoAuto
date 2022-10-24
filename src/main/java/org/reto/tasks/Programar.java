@@ -12,19 +12,27 @@ import org.reto.interactions.SeleccionarUnidadCreada;
 import org.reto.userinterface.RetoNewMeetingPage;
 import java.util.Date;
 public class Programar implements Task {
+    private String nombreUnidad;
+    private String nombreReunion;
+    private String numeroReunion;
+    public Programar(String nombreUnidad, String nombreReunion, String numeroReunion){
+        this.nombreUnidad = nombreUnidad;
+        this.nombreReunion = nombreReunion;
+        this.numeroReunion = numeroReunion;
+    }
     String fechaActual = LocalDateTime.now().format(DateTimeFormatter.ofPattern("MM/dd/yyy"));
     String fechaM = LocalDateTime.now().plusDays(1).format(DateTimeFormatter.ofPattern("MM/dd/yyy"));
-    public static Programar reunion() {
-        return Tasks.instrumented(Programar.class);
+    public static Programar reunion(String nombreUnidad, String nombreReunion, String numeroReunion) {
+        return Tasks.instrumented(Programar.class, nombreUnidad, nombreReunion, numeroReunion);
     }
 
     @Override
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(
-                Enter.theValue("Meeting name").into(RetoNewMeetingPage.INPT_MEETING_NAME),
+                Enter.theValue(nombreReunion).into(RetoNewMeetingPage.INPT_MEETING_NAME),
                 Click.on(RetoNewMeetingPage.DIPLOY_MEETING_TYPE),
                 new SeleccionarAleatorio(RetoNewMeetingPage.SELECT_MEETING_TYPE),
-                Enter.theValue("AVB2684").into(RetoNewMeetingPage.INPT_MEETING_NUMBER),
+                Enter.theValue(numeroReunion).into(RetoNewMeetingPage.INPT_MEETING_NUMBER),
                 Enter.theValue(fechaActual).into(RetoNewMeetingPage.INPT_START_DATE),
                 EscogerValorLista.index(RetoNewMeetingPage.SLCT_START_HOUR),
                 Enter.theValue(fechaM).into(RetoNewMeetingPage.INPT_END_DATE),
@@ -32,7 +40,7 @@ public class Programar implements Task {
                 Click.on(RetoNewMeetingPage.DIPLOY_LOCATION),
                 new SeleccionarAleatorio(RetoNewMeetingPage.SELECT_LOCATION),
                 Click.on(RetoNewMeetingPage.DIPLOY_UNIT),
-                SeleccionarUnidadCreada.on(RetoNewMeetingPage.SELECT_UNIT,"Marketing"),
+                SeleccionarUnidadCreada.on(RetoNewMeetingPage.SELECT_UNIT,nombreUnidad),
                 Click.on(RetoNewMeetingPage.DIPLOY_ORGANIZED_BY),
                 new SeleccionarAleatorio(RetoNewMeetingPage.SELECT_ORGANIZED_BY),
                 Click.on(RetoNewMeetingPage.DIPLOY_REPORTER),

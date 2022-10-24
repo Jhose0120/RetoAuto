@@ -11,7 +11,6 @@ public class OpenThe implements Task {
     public static OpenThe page() {
         return Tasks.instrumented(OpenThe.class);
     }
-
     @Override
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(Open.browserOn(retoPage));

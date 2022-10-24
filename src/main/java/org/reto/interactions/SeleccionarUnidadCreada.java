@@ -25,7 +25,7 @@ public class SeleccionarUnidadCreada implements Interaction {
         WebElement listLocation = target.resolveFor(actor);
         List<WebElement> options = listLocation.findElements(By.xpath(listLocation.toString().substring(10)));
         for (WebElement i : options) {
-            if (i.getText().equals(nombreUnidadDeNegocio)){
+            if (i.getText().contains(nombreUnidadDeNegocio)){
                 i.click();
                 break;
             }

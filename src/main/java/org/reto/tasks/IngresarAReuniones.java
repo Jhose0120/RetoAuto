@@ -11,7 +11,6 @@ public class IngresarAReuniones implements Task {
     public static IngresarAReuniones solicitarCreacion() {
         return Tasks.instrumented(IngresarAReuniones.class);
     }
-
     @Override
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(Click.on(RetoReunionesPage.LBL_MEETING),

@@ -22,8 +22,14 @@ public class Verificar implements Question<Boolean> {
 
     @Override
     public Boolean answeredBy(Actor actor) {
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         WebElement listLocation = RetoReunionesPage.LBL_MEETING_NAME.resolveFor(actor);
         List<WebElement> options = listLocation.findElements(By.xpath(listLocation.toString().substring(10)));
+
         for (WebElement i : options) {
             if (i.getText().equals(validador)){
                 return true;

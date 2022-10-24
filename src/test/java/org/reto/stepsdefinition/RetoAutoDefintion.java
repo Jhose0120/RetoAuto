@@ -9,8 +9,14 @@ import net.serenitybdd.screenplay.actors.OnStage;
 import net.serenitybdd.screenplay.actors.OnlineCast;
 import org.reto.questions.Verificar;
 import org.reto.tasks.*;
+import org.reto.util.GenerarData;
 
 public class RetoAutoDefintion {
+    GenerarData data = new GenerarData();
+    String nombreUnidad = data.generarData();
+    String nombreReunion = data.generarData();
+    String numeroReunion = data.generarData();
+
     @Before
     public void setStage(){
         OnStage.setTheStage(new OnlineCast());
@@ -18,17 +24,16 @@ public class RetoAutoDefintion {
     @Given("^Abro la pagina y me logueo$")
     public void abroLaPaginaYMeLogueo() throws Exception {
         OnStage.theActorCalled("J").wasAbleTo(OpenThe.page(), Login.onThePage("admin","serenity"));
+        System.out.println(nombreReunion+" \n"+nombreUnidad+" \n"+numeroReunion);
     }
-
-
-    @When("^Creo unidad de negocio$")
+    @When("^Creo unidad de negocio y genero programacion con esta$")
     public void creoUnidadDeNegocio() throws Exception {
-        OnStage.theActorInTheSpotlight().attemptsTo(Ingresar.businessUnits(), Registrar.unidad());
+        OnStage.theActorInTheSpotlight().attemptsTo(Ingresar.businessUnits(), Registrar.unidad(nombreUnidad),
+                IngresarAReuniones.solicitarCreacion(),Programar.reunion(nombreUnidad, nombreReunion, numeroReunion)
+        );
     }
-
-    @Then("^Genero programacion y valido$")
+    @Then("^valido la cracion de la programacion$")
     public void generoProgramacionYValido() throws Exception {
-        OnStage.theActorInTheSpotlight().attemptsTo(IngresarAReuniones.solicitarCreacion(),Programar.reunion());//
-        OnStage.theActorInTheSpotlight().should(GivenWhenThen.seeThat(Verificar.creacionReunion("Meeting name")));
+        OnStage.theActorInTheSpotlight().should(GivenWhenThen.seeThat(Verificar.creacionReunion(nombreReunion)));
     }
 }
