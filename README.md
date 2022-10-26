@@ -1,6 +1,37 @@
 # Reto de automatización 
 
 ## Ejercicio practico
+Dado a que el ejercicio practico se debe trabajar bajo el arquetivo screenplay se debe manejar la siguiente estructura:
+'''
+src
+	main
+		java
+			org.reto
+				interactions
+				questions
+				tasks
+				userinterface
+				util
+	test
+		java
+			org.reto
+				runner
+				stepdefinition
+		resources
+			driver
+			feature
+'''
+En la cual cada carpeta tiene asociada una funcionaridad especifica:
+
+Runner: En esta carpeta se encuentra el ejecutor de los features.
+UserInterface: las UI son el mapeo de la interfaz, donde capturaremos todos los elementos con los cuales podríamos llegar a interactuar durante la automatización. Además, se le puede añadir la URL donde se iniciará la prueba.
+Features: los features son las historias de usuario que se llevarán a cabo en las pruebas y proveerá los métodos que utilizaremos más adelante para los StepDefinitions.
+StepDefinitions: los Step Definitions son la traducción de los features a código. Los métodos que se utilizaran son los definidos en el feature.
+Task: son las interacciones que se llevarán a cabo para cumplir con las historias de usuarios planteadas. Las tasks se pueden caracterizar porque no se habla en términos de clic, set data o select. Son verbos más amplios como loguearse formulario, cerrar sesión y buscar.
+Interactions: indicar  acciones como dar clic, select,  enviar datos, scroll, entre otras cosas. 
+Questions: son lo assert a llevar a cabo para asegurar el cumplimiento de ciertos parámetros.
+Util: Contiene clases con los métodos unitarios que pueden ser utilizados libremente por otras clases del proyecto.
+
 ### 1.	Se genera feature a partir del requerimiento.
 ```
 Feature: Reto automatizacion
