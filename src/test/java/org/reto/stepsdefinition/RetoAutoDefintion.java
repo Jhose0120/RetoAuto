@@ -21,18 +21,17 @@ public class RetoAutoDefintion {
     public void setStage(){
         OnStage.setTheStage(new OnlineCast());
     }
-    @Given("^Abro la pagina y me logueo$")
-    public void abroLaPaginaYMeLogueo() throws Exception {
-        OnStage.theActorCalled("J").wasAbleTo(OpenThe.page(), Login.onThePage("admin","serenity"));
-        System.out.println(nombreReunion+" \n"+nombreUnidad+" \n"+numeroReunion);
+    @Given("^J Abre la pagina y se loguea con el usuario (.*) y la contraseña (.*)$")
+    public void abroLaPaginaYMeLogueo(String usuario, String contrasena) throws Exception {
+        OnStage.theActorCalled("J").wasAbleTo(OpenThe.page(), Login.onThePage(usuario,contrasena));
     }
-    @When("^Creo unidad de negocio y genero programacion con esta$")
+    @When("^El crea una unidad de negocio y programa una reunion con esta$")
     public void creoUnidadDeNegocio() throws Exception {
         OnStage.theActorInTheSpotlight().attemptsTo(Ingresar.businessUnits(), Registrar.unidad(nombreUnidad),
                 IngresarAReuniones.solicitarCreacion(),Programar.reunion(nombreUnidad, nombreReunion, numeroReunion)
         );
     }
-    @Then("^valido la cracion de la programacion$")
+    @Then("^J valida la creacion de la reunion$")
     public void generoProgramacionYValido() throws Exception {
         OnStage.theActorInTheSpotlight().should(GivenWhenThen.seeThat(Verificar.creacionReunion(nombreReunion)));
     }

@@ -1,6 +1,10 @@
 # Reto de automatización 
+## Condiciones
+### 1. Describa los diferentes escenarios que bajo su criterio validaría para asegurar la calidad de la página.
 
-## Ejercicio practico
+### 2. Elija al menos dos escenarios y automatícelos.
+
+## Ejercicio practicó
 ### 1.	Se genera feature a partir del requerimiento.
 ```
 Feature: Reto automatizacion
@@ -16,7 +20,6 @@ public class RetoAutoDefintion {
     String nombreUnidad = data.generarData();
     String nombreReunion = data.generarData();
     String numeroReunion = data.generarData();
-
     @Before
     public void setStage(){
         OnStage.setTheStage(new OnlineCast());
@@ -38,7 +41,7 @@ public class RetoAutoDefintion {
     }
 }
 ```
-En las primera cuatro lineas del stepdefinition se generan los datos a usar para los inputs, debido a que el requerimiento no indica que se deba validar con datos especificos, para ello se creo una clase GenerarData en la carpeta util, la cual se muestra acontinuación: 
+En las primeras cuatro líneas del stepdefinition se generan los datos a usar para los inputs, debido a que el requerimiento no indica que se deba validar con datos especificos, para ello se creo una clase GenerarData en la carpeta util, la cual se muestra a continuación: 
 #### Clase GenerarData
 En esta clase se genera un String de 10 caracteres combinando numeros y letras al azar.
 ```java
@@ -61,9 +64,9 @@ public class GenerarData {
     }
 }
 ```
-Luego de generar los datos aleatorios requeridos se inicializa el escenario e iniciamos con la definicion del primer paso del escenario dentro del cual encontramos los tasks OpenThe.page() y Login.onThePage()
+Luego de generar los datos aleatorios requeridos se inicializa el escenario e iniciamos con la definición del primer paso del escenario dentro del cual encontramos los tasks OpenThe.page() y Login.onThePage()
 #### OpenThe
-Esta clase se genera unicamente para abir la pagina sobre la cual correra la automatización la cual llama a la clase RetoPage
+Esta clase se genera únicamente para abir la página sobre la cual ejecutara la automatización la cual llama a la clase RetoPage.
 ```java
 public class OpenThe implements Task {
     private RetoPage retoPage;
@@ -77,7 +80,7 @@ public class OpenThe implements Task {
 }
 ```
 #### RetoPage
-Esta clase se encuentra en la carpeta userinterface y extiende la clase PageObject, con el fin de almacenar el URL de la pagina con la cual se va a interactuar y además los XPATHs de los Web elements requeridos para hacer login, no cree una nueva clase para los web elements de login debido a que estos se encuentran en la misma página.
+Esta clase se encuentra en la carpeta userinterface y extiende la clase PageObject, con el fin de almacenar el URL de la página con la cual se va a interactuar y además los XPATHs de los Web elements requeridos para hacer login, no cree una nueva clase para los web elements de login debido a que estos se encuentran en la misma página.
 ```java
 @DefaultUrl("https://serenity.is/demo/")
 public class RetoPage extends PageObject {
