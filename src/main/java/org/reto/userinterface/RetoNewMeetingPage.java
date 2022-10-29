@@ -23,4 +23,5 @@ public class RetoNewMeetingPage {
     public static final Target DIPLOY_ATTENDEE_LIST = Target.the("Atendee list").located(By.xpath("//*[@id='select2-chosen-12']"));
     public static final Target SELECT_ATTENDEE_LIST = Target.the("").located(By.xpath("//li[contains(@class, 'select2-results-dept-0 select2-result select2-result-selectable')]/div"));
     public static final Target BTN_SAVE = Target.the("Guardar programacion").located(By.xpath("//span[contains(text(),'Save')]"));
+    public static final Target LBL_DATA_ERRONEA = Target.the("Mensaje de error").located(By.xpath("//div[@class='toast toast-error']"));
 }

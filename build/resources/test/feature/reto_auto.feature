@@ -1,5 +1,5 @@
 Feature: Reto automatizacion
   Scenario: Crear unidad de negocio y programacion
-    Given Abro la pagina y me logueo
-    When Creo unidad de negocio y genero programacion con esta
-    Then valido la cracion de la programacion
+    Given J Abre la pagina y se loguea
+    When El crea una unidad de negocio y programa una reunion con esta
+    Then J valida la creacion de la reunion

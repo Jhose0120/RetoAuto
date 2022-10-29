@@ -9,4 +9,5 @@ import org.openqa.selenium.By;
 public class RetoPage extends PageObject {
     public static final Target USENAME = Target.the("Usuario").located(By.xpath("//*[@name='Username']"));
     public static final Target PASSWORD = Target.the("Contraseña").located(By.xpath("//*[@name='Password']"));
+    public static final Target LBL_LOGIN_ERRONEO = Target.the("Mensaje de error logueo").located(By.xpath("//div[@class='toast-message']"));
 }
